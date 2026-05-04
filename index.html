@@ -32,142 +32,6 @@
   --radius:      4px;
 }
 
-/* ─── Auth Screen ─────────────────────────────────── */
-#auth-screen {
-  position: fixed; inset: 0; z-index: 9999;
-  background: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px;
-}
-#auth-screen.hidden { display: none; }
-
-.auth-box {
-  width: 100%; max-width: 380px;
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-top: 3px solid var(--orange);
-  border-radius: 8px;
-  padding: 36px 32px 28px;
-  display: flex; flex-direction: column; gap: 0;
-}
-
-.auth-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 46px;
-  letter-spacing: 6px;
-  color: var(--orange);
-  text-align: center;
-  line-height: 1;
-  text-shadow: 0 0 30px var(--orange-glow);
-  margin-bottom: 6px;
-}
-.auth-tagline {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: var(--text-dim);
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.auth-tabs {
-  display: flex;
-  border-bottom: 1px solid var(--border2);
-  margin-bottom: 24px;
-}
-.auth-tab {
-  flex: 1; background: none; border: none;
-  padding: 10px 0;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px; letter-spacing: 2px;
-  color: var(--text-dim); cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  transition: all 0.2s;
-}
-.auth-tab.active { color: var(--orange); border-bottom-color: var(--orange); }
-
-.auth-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-
-.auth-input {
-  width: 100%; background: var(--bg);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  color: var(--text);
-  font-family: 'Barlow', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.auth-input:focus { border-color: var(--orange); }
-.auth-input::placeholder { color: var(--text-dim); }
-
-.auth-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px; letter-spacing: 2px;
-  color: var(--text-dim);
-  margin-bottom: -6px;
-}
-
-.btn-auth {
-  width: 100%;
-  background: var(--orange);
-  color: #000;
-  border: none;
-  border-radius: var(--radius);
-  padding: 13px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 18px; letter-spacing: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.btn-auth:hover { background: var(--orange2); box-shadow: 0 0 20px var(--orange-glow); }
-.btn-auth:disabled { background: var(--border2); color: var(--text-dim); cursor: not-allowed; box-shadow: none; }
-
-.auth-error {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px; letter-spacing: 1px;
-  color: var(--red);
-  text-align: center;
-  margin-top: 10px;
-  min-height: 16px;
-}
-.auth-divider {
-  text-align: center;
-  font-family: 'Space Mono', monospace;
-  font-size: 9px; letter-spacing: 2px;
-  color: var(--border2);
-  margin: 12px 0;
-}
-
-/* user bar in header */
-.user-bar {
-  display: flex; align-items: center; gap: 12px;
-  font-family: 'Space Mono', monospace;
-  font-size: 9px; letter-spacing: 1px;
-  color: var(--text-dim);
-}
-.user-bar .user-email { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.btn-logout {
-  background: none; border: 1px solid var(--border2);
-  color: var(--text-dim); border-radius: var(--radius);
-  padding: 4px 10px; font-family: 'Space Mono', monospace;
-  font-size: 9px; letter-spacing: 1px; cursor: pointer;
-  transition: all 0.15s;
-}
-.btn-logout:hover { border-color: var(--red); color: var(--red); }
-
-.sync-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--border2);
-  display: inline-block;
-  transition: background 0.3s;
-}
-.sync-dot.syncing { background: var(--orange); box-shadow: 0 0 6px var(--orange-glow); animation: pulse 1s infinite; }
-.sync-dot.synced  { background: var(--green); box-shadow: 0 0 6px rgba(57,255,20,0.4); }
-
 /* ─── Reset ─────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -1959,66 +1823,8 @@ header {
   .heatmap-grid { grid-template-columns: repeat(10, 1fr); }
 }
 </style>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script>
-firebase.initializeApp({
-  apiKey:"AIzaSyD-IjPBi05FtCnowpn0LKuxFool8Zpr13M",
-  authDomain:"mm-suplementos-23cb9.firebaseapp.com",
-  databaseURL:"https://mm-suplementos-23cb9-default-rtdb.firebaseio.com",
-  projectId:"mm-suplementos-23cb9",
-  storageBucket:"mm-suplementos-23cb9.firebasestorage.app",
-  messagingSenderId:"571143844870",
-  appId:"1:571143844870:web:f72fd99879ae00ec487f87"
-});
-const _auth = firebase.auth();
-const _db   = firebase.database();
-let _uid = null;
-</script>
 </head>
 <body>
-
-<!-- ─── Auth Screen ──────────────────────────────── -->
-<div id="auth-screen">
-  <div class="auth-box">
-    <div class="auth-logo">FORGED</div>
-    <div class="auth-tagline">A DISCIPLINA TE MOLDA. TODO DIA.</div>
-
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tab-login-btn" onclick="authSwitchTab('login')">ENTRAR</button>
-      <button class="auth-tab" id="tab-register-btn" onclick="authSwitchTab('register')">CADASTRAR</button>
-    </div>
-
-    <!-- Login -->
-    <div id="auth-login-form">
-      <div class="auth-fields">
-        <span class="auth-label">E-MAIL</span>
-        <input class="auth-input" type="email" id="login-email" placeholder="seu@email.com" autocomplete="email">
-        <span class="auth-label">SENHA</span>
-        <input class="auth-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
-      </div>
-      <button class="btn-auth" id="btn-login" onclick="doLogin()">ENTRAR</button>
-    </div>
-
-    <!-- Register -->
-    <div id="auth-register-form" style="display:none">
-      <div class="auth-fields">
-        <span class="auth-label">NOME</span>
-        <input class="auth-input" type="text" id="reg-name" placeholder="Seu nome" autocomplete="name">
-        <span class="auth-label">E-MAIL</span>
-        <input class="auth-input" type="email" id="reg-email" placeholder="seu@email.com" autocomplete="email">
-        <span class="auth-label">SENHA</span>
-        <input class="auth-input" type="password" id="reg-pass" placeholder="Mín. 6 caracteres" autocomplete="new-password">
-      </div>
-      <button class="btn-auth" id="btn-register" onclick="doRegister()">CRIAR CONTA</button>
-    </div>
-
-    <div class="auth-error" id="auth-error"></div>
-  </div>
-</div>
 
 <!-- ─── Header ─────────────────────────────────── -->
 <header>
@@ -2029,11 +1835,6 @@ let _uid = null;
     </div>
     <div id="rank-badge" class="rank-badge">INICIANTE</div>
     <button class="btn-help" onclick="tutOpen()" title="Tutorial">?</button>
-    <div class="user-bar" id="user-bar" style="display:none">
-      <span class="sync-dot" id="sync-dot" title="Sincronizado"></span>
-      <span class="user-email" id="user-email"></span>
-      <button class="btn-logout" onclick="doLogout()">SAIR</button>
-    </div>
   </div>
 
   <div class="stats-row">
@@ -2454,25 +2255,9 @@ let S = {
 let activeFilter = 'all';
 
 // ═══════════════════════════════════════════════════
-//  PERSISTENCE — Firebase Realtime DB
+//  PERSISTENCE
 // ═══════════════════════════════════════════════════
-let _saveTimer = null;
-
-function save() {
-  localStorage.setItem('forged_v2', JSON.stringify(S)); // cache local
-  if (!_uid) return;
-  clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(() => {
-    const dot = document.getElementById('sync-dot');
-    if (dot) { dot.className = 'sync-dot syncing'; dot.title = 'Salvando...'; }
-    _db.ref('forged_users/' + _uid + '/state').set(JSON.parse(JSON.stringify(S)))
-      .then(() => {
-        if (dot) { dot.className = 'sync-dot synced'; dot.title = 'Sincronizado'; }
-        setTimeout(() => { if (dot) dot.className = 'sync-dot'; }, 2000);
-      })
-      .catch(e => console.error('Save error:', e));
-  }, 800);
-}
+function save() { localStorage.setItem('forged_v2', JSON.stringify(S)); }
 
 function load() {
   const raw = localStorage.getItem('forged_v2');
@@ -2482,107 +2267,6 @@ function load() {
   if (S.tasks)    S.tasks.forEach(t => { if (!t.items) t.items = []; });
   if (!S.backlog) S.backlog = [];
 }
-
-async function loadFromCloud() {
-  if (!_uid) return;
-  try {
-    const snap = await _db.ref('forged_users/' + _uid + '/state').once('value');
-    const data = snap.val();
-    if (data) {
-      S = { ...S, ...data };
-      if (S.missions) S.missions.forEach(m => { if (!m.items) m.items = []; });
-      if (S.tasks)    S.tasks.forEach(t => { if (!t.items) t.items = []; });
-      if (!S.backlog) S.backlog = [];
-      localStorage.setItem('forged_v2', JSON.stringify(S));
-    }
-  } catch(e) { console.error('Cloud load error:', e); }
-}
-
-// ═══════════════════════════════════════════════════
-//  AUTH FUNCTIONS
-// ═══════════════════════════════════════════════════
-function authSwitchTab(tab) {
-  document.getElementById('auth-login-form').style.display    = tab === 'login'    ? '' : 'none';
-  document.getElementById('auth-register-form').style.display = tab === 'register' ? '' : 'none';
-  document.getElementById('tab-login-btn').classList.toggle('active', tab === 'login');
-  document.getElementById('tab-register-btn').classList.toggle('active', tab === 'register');
-  document.getElementById('auth-error').textContent = '';
-}
-
-function _authErr(msg) {
-  const msgs = {
-    'auth/invalid-email':          'E-mail inválido.',
-    'auth/user-not-found':         'Usuário não encontrado.',
-    'auth/wrong-password':         'Senha incorreta.',
-    'auth/email-already-in-use':   'E-mail já cadastrado.',
-    'auth/weak-password':          'Senha muito fraca (mín. 6 caracteres).',
-    'auth/too-many-requests':      'Muitas tentativas. Aguarde um momento.',
-    'auth/invalid-credential':     'E-mail ou senha inválidos.',
-  };
-  document.getElementById('auth-error').textContent = msgs[msg] || 'Erro: ' + msg;
-}
-
-function _setAuthBusy(id, busy) {
-  const btn = document.getElementById(id);
-  if (btn) btn.disabled = busy;
-}
-
-async function doLogin() {
-  const email = document.getElementById('login-email').value.trim();
-  const pass  = document.getElementById('login-pass').value;
-  if (!email || !pass) { document.getElementById('auth-error').textContent = 'Preencha todos os campos.'; return; }
-  _setAuthBusy('btn-login', true);
-  try {
-    await _auth.signInWithEmailAndPassword(email, pass);
-  } catch(e) { _authErr(e.code); }
-  _setAuthBusy('btn-login', false);
-}
-
-async function doRegister() {
-  const name  = document.getElementById('reg-name').value.trim();
-  const email = document.getElementById('reg-email').value.trim();
-  const pass  = document.getElementById('reg-pass').value;
-  if (!name || !email || !pass) { document.getElementById('auth-error').textContent = 'Preencha todos os campos.'; return; }
-  _setAuthBusy('btn-register', true);
-  try {
-    const cred = await _auth.createUserWithEmailAndPassword(email, pass);
-    await cred.user.updateProfile({ displayName: name });
-  } catch(e) { _authErr(e.code); }
-  _setAuthBusy('btn-register', false);
-}
-
-async function doLogout() {
-  await _auth.signOut();
-}
-
-// ─── Auth state listener ─────────────────────────
-_auth.onAuthStateChanged(async (user) => {
-  if (user) {
-    _uid = user.uid;
-    // load from cloud, then init app
-    await loadFromCloud();
-    document.getElementById('auth-screen').classList.add('hidden');
-    document.getElementById('user-bar').style.display = 'flex';
-    document.getElementById('user-email').textContent = user.displayName || user.email;
-    checkDailyReset();
-    render();
-    renderBacklog();
-  } else {
-    _uid = null;
-    document.getElementById('auth-screen').classList.remove('hidden');
-    document.getElementById('user-bar').style.display = 'none';
-  }
-});
-
-// keyboard shortcuts for auth forms
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Enter') return;
-  const authScreen = document.getElementById('auth-screen');
-  if (authScreen.classList.contains('hidden')) return;
-  const loginVisible = document.getElementById('auth-login-form').style.display !== 'none';
-  if (loginVisible) doLogin(); else doRegister();
-});
-
 
 // ═══════════════════════════════════════════════════
 //  LEVEL & RANK
@@ -3695,8 +3379,10 @@ document.getElementById('backlog-input').addEventListener('keydown', e => {
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-load(); // cache local para uso offline
-// A inicialização completa é feita no onAuthStateChanged
+load();
+checkDailyReset();
+render();
+renderBacklog();
 if (window._streakBroken) {
   setTimeout(() => toast('💀 Você quebrou seu streak de ' + window._streakBroken + ' dias… recomece mais forte.', 'orange'), 800);
 }
