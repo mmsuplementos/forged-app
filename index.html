@@ -1509,6 +1509,297 @@ header {
   margin-bottom: 8px;
 }
 
+/* ─── Checklist ─────────────────────────────────── */
+.checklist-wrap {
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.checklist-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.checklist-count {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  min-width: 34px;
+  text-align: right;
+}
+
+.checklist-bar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--border2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.checklist-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange), var(--orange2));
+  border-radius: 3px;
+  transition: width 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 0 6px var(--orange-glow);
+}
+
+.checklist-bar-fill.complete {
+  background: linear-gradient(90deg, var(--green), #00ff88);
+  box-shadow: 0 0 6px rgba(57,255,20,0.4);
+}
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+
+.check-item:hover { background: var(--surface3); }
+
+.check-item-box {
+  width: 16px; height: 16px;
+  border: 1px solid var(--border2);
+  border-radius: 2px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 10px;
+  transition: all 0.15s; color: #000;
+}
+.check-item-box:hover { border-color: var(--orange); background: var(--orange-dim); }
+.check-item.done .check-item-box { background: var(--orange); border-color: var(--orange); }
+
+.check-item-label {
+  flex: 1;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.4;
+}
+.check-item.done .check-item-label {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.check-item-del {
+  background: none; border: none;
+  color: var(--text-muted); cursor: pointer;
+  font-size: 14px; padding: 0 2px; line-height: 1;
+  opacity: 0;
+  transition: all 0.15s;
+}
+.check-item:hover .check-item-del { opacity: 1; }
+.check-item-del:hover { color: var(--red); }
+
+.checklist-add-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.checklist-input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+.checklist-input:focus { border-color: var(--orange); }
+.checklist-input::placeholder { color: var(--text-muted); }
+
+.btn-add-check {
+  background: none;
+  border: 1px solid var(--border2);
+  color: var(--text-dim);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.btn-add-check:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ─── BACKLOG ─────────────────────────────────────── */
+.backlog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.backlog-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.18s;
+  flex-wrap: wrap;
+}
+
+.backlog-item:hover {
+  background: var(--surface2);
+  border-color: var(--border2);
+  border-left-color: var(--orange);
+}
+
+.backlog-item-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.backlog-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btn-bl {
+  background: none;
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  color: var(--text-dim);
+}
+
+.btn-bl-mission {
+  border-color: rgba(240,90,14,0.3);
+  color: var(--orange);
+}
+.btn-bl-mission:hover {
+  background: var(--orange-dim);
+  border-color: var(--orange);
+  box-shadow: 0 0 10px var(--orange-glow);
+}
+
+.btn-bl-task {
+  border-color: rgba(74,240,255,0.2);
+  color: var(--blue);
+}
+.btn-bl-task:hover {
+  background: var(--blue-dim);
+  border-color: var(--blue);
+}
+
+.btn-bl-del {
+  border-color: var(--border);
+  color: var(--text-muted);
+  padding: 5px 8px;
+}
+.btn-bl-del:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* promote inline panel */
+.backlog-promote-panel {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  margin-top: 2px;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+
+.backlog-promote-panel .sel { font-size: 11px; padding: 6px 10px; }
+
+.btn-bl-confirm {
+  background: var(--orange);
+  color: #000;
+  border: none;
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-bl-confirm:hover { background: var(--orange2); }
+
+.btn-bl-cancel {
+  background: none;
+  border: 1px solid var(--border2);
+  color: var(--text-dim);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-bl-cancel:hover { border-color: var(--red); color: var(--red); }
+
+.backlog-add-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.backlog-counter {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.mission-big-card { flex-wrap: wrap; }
+.mission-big-card .mbc-body { min-width: 0; }
+
+/* task-item column layout */
+.task-item { flex-wrap: wrap; }
+
 /* limit banner */
 .limit-banner {
   background: rgba(255,68,68,0.07); border: 1px solid rgba(255,68,68,0.3);
@@ -1600,6 +1891,7 @@ header {
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('habitos')">⚔ RITOS</button>
   <button class="tab-btn" onclick="switchTab('missoes')">🎯 MISSÕES</button>
+  <button class="tab-btn" onclick="switchTab('backlog')">📦 BACKLOG</button>
   <button class="tab-btn" onclick="switchTab('streak')">🔥 STREAK</button>
   <button class="tab-btn" onclick="switchTab('recompensas')">💰 RECOMPENSAS</button>
   <button class="tab-btn" onclick="switchTab('rank')">🏆 RANK</button>
@@ -1655,6 +1947,30 @@ header {
         <option value="15">+15 XP</option>
       </select>
       <button class="btn-primary" onclick="addTask()" style="background:var(--surface2);color:var(--text);border:1px solid var(--border2);">+ TASK</button>
+    </div>
+
+  </div>
+
+  <!-- ── BACKLOG ── -->
+  <div id="tab-backlog" class="tab-panel">
+
+    <div class="mq-section-head" style="margin-bottom:18px">
+      <p class="sec-title" style="margin:0">📦 BACKLOG</p>
+      <span class="backlog-counter" id="backlog-counter">0 ITENS</span>
+    </div>
+
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:1px;line-height:1.9;margin-bottom:20px;">
+      Capture tudo aqui sem pensar.<br>
+      Quando for hora de agir — promova para Missão ou Task.
+    </p>
+
+    <div class="backlog-list" id="backlog-list"></div>
+
+    <div class="backlog-add-form">
+      <input class="input-main" type="text" id="backlog-input"
+        placeholder="O que você precisa fazer..." maxlength="80" autocomplete="off"
+        style="flex:1">
+      <button class="btn-primary" onclick="addBacklogItem()">+ CAPTURAR</button>
     </div>
 
   </div>
@@ -1933,6 +2249,7 @@ let S = {
   missionDef: null,
   missions: [],   // { id, name, cat, xp, done }
   tasks: [],      // { id, name, xp, done }
+  backlog: [],    // { id, name }
 };
 
 let activeFilter = 'all';
@@ -1945,6 +2262,10 @@ function save() { localStorage.setItem('forged_v2', JSON.stringify(S)); }
 function load() {
   const raw = localStorage.getItem('forged_v2');
   if (raw) { try { S = { ...S, ...JSON.parse(raw) }; } catch(e) {} }
+  // migrate: ensure items array exists on all missions and tasks
+  if (S.missions) S.missions.forEach(m => { if (!m.items) m.items = []; });
+  if (S.tasks)    S.tasks.forEach(t => { if (!t.items) t.items = []; });
+  if (!S.backlog) S.backlog = [];
 }
 
 // ═══════════════════════════════════════════════════
@@ -2274,6 +2595,7 @@ function switchTab(id) {
   if (id === 'rank')      renderRankTable();
   if (id === 'dashboard') renderDashboard();
   if (id === 'missoes')   renderMissoes();
+  if (id === 'backlog')   renderBacklog();
 }
 
 // ═══════════════════════════════════════════════════
@@ -2728,11 +3050,12 @@ function addMission() {
   const name = document.getElementById('mission-name-input').value.trim();
   if (!name) { document.getElementById('mission-name-input').focus(); return; }
   S.missions.push({
-    id:   uid(),
+    id:    uid(),
     name,
-    cat:  document.getElementById('mission-cat-sel').value,
-    xp:   parseInt(document.getElementById('mission-xp-sel').value),
-    done: false,
+    cat:   document.getElementById('mission-cat-sel').value,
+    xp:    parseInt(document.getElementById('mission-xp-sel').value),
+    done:  false,
+    items: [],
   });
   document.getElementById('mission-name-input').value = '';
   save(); renderMissoes();
@@ -2770,10 +3093,11 @@ function addTask() {
   const name = document.getElementById('task-name-input').value.trim();
   if (!name) { document.getElementById('task-name-input').focus(); return; }
   S.tasks.push({
-    id:   uid(),
+    id:    uid(),
     name,
-    xp:   parseInt(document.getElementById('task-xp-sel').value),
-    done: false,
+    xp:    parseInt(document.getElementById('task-xp-sel').value),
+    done:  false,
+    items: [],
   });
   document.getElementById('task-name-input').value = '';
   save(); renderMissoes();
@@ -2805,6 +3129,80 @@ function deleteTask(id) {
   save(); render(); renderMissoes();
 }
 
+// ─── CHECKLIST HELPERS ────────────────────────────────
+function _findParent(type, id) {
+  const arr = type === 'mission' ? S.missions : S.tasks;
+  return arr ? arr.find(x => x.id === id) : null;
+}
+
+function addCheckItem(type, parentId) {
+  const inp = document.getElementById(`ci-input-${type}-${parentId}`);
+  if (!inp) return;
+  const text = inp.value.trim();
+  if (!text) { inp.focus(); return; }
+  const parent = _findParent(type, parentId);
+  if (!parent) return;
+  if (!parent.items) parent.items = [];
+  parent.items.push({ id: uid(), text, done: false });
+  inp.value = '';
+  save(); renderMissoes();
+  // re-focus input after render
+  setTimeout(() => {
+    const ni = document.getElementById(`ci-input-${type}-${parentId}`);
+    if (ni) ni.focus();
+  }, 50);
+}
+
+function toggleCheckItem(type, parentId, itemId) {
+  const parent = _findParent(type, parentId);
+  if (!parent || !parent.items) return;
+  const item = parent.items.find(x => x.id === itemId);
+  if (item) item.done = !item.done;
+  save(); renderMissoes();
+}
+
+function deleteCheckItem(type, parentId, itemId) {
+  const parent = _findParent(type, parentId);
+  if (!parent || !parent.items) return;
+  parent.items = parent.items.filter(x => x.id !== itemId);
+  save(); renderMissoes();
+}
+
+function checklistHTML(type, parent) {
+  const items = parent.items || [];
+  const total = items.length;
+  const done  = items.filter(i => i.done).length;
+  const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+  const complete = total > 0 && done === total;
+
+  const progressBar = total > 0 ? `
+    <div class="checklist-progress-row">
+      <div class="checklist-bar-track">
+        <div class="checklist-bar-fill${complete?' complete':''}" style="width:${pct}%"></div>
+      </div>
+      <span class="checklist-count">${done}/${total}</span>
+    </div>` : '';
+
+  const itemsHTML = items.map(item => `
+    <div class="check-item${item.done?' done':''}">
+      <div class="check-item-box" onclick="toggleCheckItem('${type}',${parent.id},${item.id})">${item.done?'✓':''}</div>
+      <span class="check-item-label">${esc(item.text)}</span>
+      <button class="check-item-del" onclick="deleteCheckItem('${type}',${parent.id},${item.id})">×</button>
+    </div>`).join('');
+
+  return `
+    <div class="checklist-wrap">
+      ${progressBar}
+      ${total > 0 ? `<div class="checklist-items">${itemsHTML}</div>` : ''}
+      <div class="checklist-add-row">
+        <input id="ci-input-${type}-${parent.id}" class="checklist-input" placeholder="+ novo item..." maxlength="80"
+          onkeydown="if(event.key==='Enter')addCheckItem('${type}',${parent.id})">
+        <button class="btn-add-check" onclick="addCheckItem('${type}',${parent.id})">+ ITEM</button>
+      </div>
+    </div>`;
+}
+
+// ──────────────────────────────────────────────────────
 function renderMissoes() {
   if (!S.missions) S.missions = [];
   if (!S.tasks)    S.tasks    = [];
@@ -2830,6 +3228,7 @@ function renderMissoes() {
         </div>
         <div class="mbc-xp">+${m.xp}<small>XP</small></div>
         <button class="btn-del" onclick="deleteMission(${m.id})" style="margin-left:6px">×</button>
+        ${checklistHTML('mission', m)}
       </div>`).join('');
   }
 
@@ -2844,8 +3243,117 @@ function renderMissoes() {
         <span class="task-name">${esc(t.name)}</span>
         <span class="task-xp">+${t.xp} XP</span>
         <button class="btn-del" onclick="deleteTask(${t.id})">×</button>
+        ${checklistHTML('task', t)}
       </div>`).join('');
   }
+}
+
+// ═══════════════════════════════════════════════════
+//  BACKLOG
+// ═══════════════════════════════════════════════════
+let _blPromoting = null; // id of item currently showing promote panel
+
+function addBacklogItem() {
+  if (!S.backlog) S.backlog = [];
+  const inp = document.getElementById('backlog-input');
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); return; }
+  S.backlog.unshift({ id: uid(), name }); // newest on top
+  inp.value = '';
+  save(); renderBacklog();
+}
+
+function removeBacklogItem(id) {
+  S.backlog = S.backlog.filter(x => x.id !== id);
+  if (_blPromoting === id) _blPromoting = null;
+  save(); renderBacklog();
+}
+
+function toggleBlPromote(id) {
+  _blPromoting = (_blPromoting === id) ? null : id;
+  renderBacklog();
+  if (_blPromoting === id) {
+    setTimeout(() => {
+      const el = document.getElementById(`bl-panel-${id}`);
+      if (el) el.querySelector('select')?.focus();
+    }, 60);
+  }
+}
+
+function confirmPromoteMission(id) {
+  if (!S.missions) S.missions = [];
+  if (S.missions.filter(m => !m.done).length >= 3) {
+    toast('⛔ Limite de 3 missões ativo! Conclua uma antes.', 'orange');
+    return;
+  }
+  const item = S.backlog.find(x => x.id === id);
+  if (!item) return;
+  const cat = document.getElementById(`bl-cat-${id}`)?.value || 'negocio';
+  const xp  = parseInt(document.getElementById(`bl-xp-${id}`)?.value || '100');
+  S.missions.push({ id: uid(), name: item.name, cat, xp, done: false, items: [] });
+  S.backlog = S.backlog.filter(x => x.id !== id);
+  _blPromoting = null;
+  save(); renderMissoes(); renderBacklog();
+  switchTab('missoes');
+  toast('🎯 MOVIDO PARA MISSÕES', 'orange');
+}
+
+function promoteToTask(id) {
+  if (!S.tasks) S.tasks = [];
+  const item = S.backlog.find(x => x.id === id);
+  if (!item) return;
+  S.tasks.push({ id: uid(), name: item.name, xp: 10, done: false, items: [] });
+  S.backlog = S.backlog.filter(x => x.id !== id);
+  _blPromoting = null;
+  save(); renderMissoes(); renderBacklog();
+  switchTab('missoes');
+  toast('📋 MOVIDO PARA TASKS', 'orange');
+}
+
+function renderBacklog() {
+  if (!S.backlog) S.backlog = [];
+  const list = document.getElementById('backlog-list');
+  const counter = document.getElementById('backlog-counter');
+  if (!list) return;
+
+  counter.textContent = S.backlog.length + (S.backlog.length === 1 ? ' ITEM' : ' ITENS');
+
+  if (!S.backlog.length) {
+    list.innerHTML = `<div class="empty" style="margin-bottom:16px">
+      <div class="icon">📦</div>
+      <p>Backlog vazio.<br>Capture tudo que está na sua cabeça.</p>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = S.backlog.map(b => {
+    const promoting = _blPromoting === b.id;
+    const panel = promoting ? `
+      <div class="backlog-promote-panel" id="bl-panel-${b.id}">
+        <select class="sel" id="bl-cat-${b.id}">
+          <option value="negocio">💼 Negócio</option>
+          <option value="fisico">💪 Físico</option>
+          <option value="mental">🧠 Mental</option>
+        </select>
+        <select class="sel" id="bl-xp-${b.id}">
+          <option value="80">+80 XP</option>
+          <option value="100" selected>+100 XP</option>
+          <option value="120">+120 XP</option>
+        </select>
+        <button class="btn-bl-confirm" onclick="confirmPromoteMission(${b.id})">CONFIRMAR</button>
+        <button class="btn-bl-cancel" onclick="toggleBlPromote(${b.id})">CANCELAR</button>
+      </div>` : '';
+    return `
+      <div class="backlog-item">
+        <span class="backlog-item-name">${esc(b.name)}</span>
+        <div class="backlog-actions">
+          <button class="btn-bl btn-bl-mission" onclick="toggleBlPromote(${b.id})" title="Transformar em missão">🎯 MISSÃO</button>
+          <button class="btn-bl btn-bl-task"    onclick="promoteToTask(${b.id})"    title="Transformar em tarefa">📋 TASK</button>
+          <button class="btn-bl btn-bl-del"     onclick="removeBacklogItem(${b.id})" title="Remover">❌</button>
+        </div>
+        ${panel}
+      </div>`;
+  }).join('');
 }
 
 // ═══════════════════════════════════════════════════
@@ -2863,6 +3371,10 @@ document.getElementById('mission-name-input').addEventListener('keydown', e => {
 document.getElementById('task-name-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') addTask();
 });
+document.getElementById('backlog-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addBacklogItem();
+});
+
 
 // ═══════════════════════════════════════════════════
 //  INIT
@@ -2870,6 +3382,7 @@ document.getElementById('task-name-input').addEventListener('keydown', e => {
 load();
 checkDailyReset();
 render();
+renderBacklog();
 if (window._streakBroken) {
   setTimeout(() => toast('💀 Você quebrou seu streak de ' + window._streakBroken + ' dias… recomece mais forte.', 'orange'), 800);
 }
